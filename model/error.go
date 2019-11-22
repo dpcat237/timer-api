@@ -19,6 +19,11 @@ func NewErrorNil() Error {
 	return Error{}
 }
 
+// NewErrorPrecondition creates error with HTTP code 412
+func NewErrorPrecondition(m string) Error {
+	return newError(m, http.StatusPreconditionFailed)
+}
+
 // NewErrorServer creates error with HTTP code 500
 func NewErrorServer(m string) Error {
 	return newError(m, http.StatusInternalServerError)

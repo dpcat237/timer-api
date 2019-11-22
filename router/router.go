@@ -72,6 +72,7 @@ func (mng *Manager) getV1Routes(cntCll controller.Collector) []model.Route {
 	return []model.Route{
 		/** Session **/
 		model.NewRoute(http.MethodGet, "/sessions", cntCll.SesCnt.GetSessions, "Get sessions"),
+		model.NewRoute(http.MethodPost, "/sessions", cntCll.SesCnt.AddSession, "Add session"),
 	}
 }
 

@@ -1,6 +1,7 @@
 package db
 
 import (
+	"gitlab.com/dpcat237/timer-api/logger"
 	bolt "go.etcd.io/bbolt"
 
 	"gitlab.com/dpcat237/timer-api/model"
@@ -39,4 +40,11 @@ func InitDbCollector(dbName string) (DatabaseCollector, model.Error) {
 	}
 	cll.Db = db
 	return &cll, model.NewErrorNil()
+}
+
+// logRollback launch rollback and logs if are error
+func logRollback(tx *bolt.Tx, logg logger.Logger) {
+	if err := tx.Rollback(); err != nil {
+		logg.Errorf("Error during rollback %s", err)
+	}
 }

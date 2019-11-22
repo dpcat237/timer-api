@@ -1,6 +1,7 @@
 package service
 
 import (
+	"gitlab.com/dpcat237/timer-api/logger"
 	"gitlab.com/dpcat237/timer-api/repository/db"
 )
 
@@ -10,9 +11,9 @@ type Collector struct {
 }
 
 // Init initializes services and required repositories
-func Init(dbCl db.DatabaseCollector) Collector {
+func Init(dbCl db.DatabaseCollector, logg logger.Logger) Collector {
 	// Initialize repositories
-	sesRps := db.NewSession(dbCl.GetDatabase())
+	sesRps := db.NewSession(dbCl.GetDatabase(), logg)
 
 	// Initialize services
 	sesSrv := newSession(sesRps)

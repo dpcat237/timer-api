@@ -21,7 +21,7 @@ func main() {
 		logg.Error(er)
 	}
 
-	srvCll := service.Init(dbCl)
+	srvCll := service.Init(dbCl, logg)
 	cntCll := controller.InitCollector(logg, srvCll)
 	rtrMng := router.NewManager(cntCll)
 	rtrMng.LunchRouter(cfg.HTTPport)

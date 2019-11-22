@@ -10,6 +10,25 @@
   revision = "4a4535dd56e7bac061977376055c8cce1e4aecc7"
 
 [[projects]]
+  digest = "1:e1cbe9ce835f515ce57500b8db6b94f399650bea2ddfac59f9b05d98db77a96d"
+  name = "github.com/go-playground/locales"
+  packages = [
+    ".",
+    "currency",
+  ]
+  pruneopts = "UT"
+  revision = "9f105231d3a5f6877a2bf8321dfa15ea6f844b1b"
+  version = "v0.13.0"
+
+[[projects]]
+  digest = "1:0d18fff5db6983e912eb2ac15038ed3eabb8ec03c9bd9129b10cd0213f50ec6d"
+  name = "github.com/go-playground/universal-translator"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "f87b1403479a348651dbf5f07f5cc6e5fcf07008"
+  version = "v0.17.0"
+
+[[projects]]
   digest = "1:cbec35fe4d5a4fba369a656a8cd65e244ea2c743007d8f6c1ccb132acf9d1296"
   name = "github.com/gorilla/mux"
   packages = ["."]
@@ -32,6 +51,14 @@
   pruneopts = "UT"
   revision = "f55edac94c9bbba5d6182a4be46d86a2c9b5b50e"
   version = "v1.0.2"
+
+[[projects]]
+  digest = "1:803b281410ec195645c782ddb9cb029d43c2855d4b7824ea31104985b507a458"
+  name = "github.com/leodido/go-urn"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "a0f5013415294bb94553821ace21a1a74c0298cc"
+  version = "v1.2.0"
 
 [[projects]]
   digest = "1:4a29eeb25603debe8f2098a9902c4d3851034cf70d33be428826e86e8c30a1b0"
@@ -108,6 +135,14 @@
   pruneopts = "UT"
   revision = "bd437916bb0eb726b873ee8e9b2dcf212d32e2fd"
 
+[[projects]]
+  digest = "1:5c482a87dee56174d81b0cd40abd4045305b5fe430a2de0320dc2835ffe76fa7"
+  name = "gopkg.in/go-playground/validator.v10"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "691a5f5f25701d0a22785c982db4f22bfac47931"
+  version = "v10.0.1"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
@@ -119,6 +154,7 @@
     "github.com/x-cray/logrus-prefixed-formatter",
     "go.etcd.io/bbolt",
     "golang.org/x/net/context",
+    "gopkg.in/go-playground/validator.v10",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
