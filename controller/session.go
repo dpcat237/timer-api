@@ -57,7 +57,7 @@ func (cnt *sessionController) GetSessions(w http.ResponseWriter, r *http.Request
 	errMsg := ""
 	defer cnt.logg.RequestEnd(time.Now(), act, &status, &errMsg)
 
-	dto, er := cnt.sesSrv.GetSessions()
+	dto, er := cnt.sesSrv.GetSessions(getQueryVal(r, service.FilterQuery))
 	if er.IsError() {
 		status = er.Status
 		errMsg = er.Message

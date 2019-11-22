@@ -34,6 +34,7 @@ func (srv *Collector) HealthCheck(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// getBodyContent extract body from request
 func getBodyContent(r *http.Request, data interface{}) model.Error {
 	body, err := ioutil.ReadAll(io.LimitReader(r.Body, r.ContentLength))
 	if err != nil {
@@ -46,10 +47,17 @@ func getBodyContent(r *http.Request, data interface{}) model.Error {
 	return model.NewErrorNil()
 }
 
+// getQueryVal returns URL query variable
+func getQueryVal(r *http.Request, key string) string {
+	return r.URL.Query().Get(key)
+}
+
+// returnCreatedNoContent sets status of response to 201
 func returnCreatedNoContent(w http.ResponseWriter) {
 	w.WriteHeader(http.StatusCreated)
 }
 
+// returnCreatedNoContent sets status of response to 500 and returns an error message
 func returnFailed(w http.ResponseWriter, er model.Error) {
 	w.WriteHeader(er.Status)
 	if err := json.NewEncoder(w).Encode(er); err != nil {
@@ -58,6 +66,7 @@ func returnFailed(w http.ResponseWriter, er model.Error) {
 	}
 }
 
+// returnCreatedNoContent returns marshaled array to JSON and empty array if array is empty
 func returnJsonArray(w http.ResponseWriter, v interface{}) {
 	if zero.IsZero(v) {
 		v = make([]string, 0)
