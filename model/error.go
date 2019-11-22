@@ -5,10 +5,12 @@ import (
 	"net/http"
 )
 
+const ErrorServer = "Internal server error"
+
 // Error contains error details for public response and logging
 type Error struct {
 	Message    string `json:"message"`
-	Status     uint32 `json:"-"`
+	Status     int    `json:"-"`
 	messageLog string
 }
 
@@ -54,7 +56,7 @@ func (e Error) WithErrorObject(err Error) Error {
 }
 
 // newError creates Error struct
-func newError(m string, s uint32) Error {
+func newError(m string, s int) Error {
 	return Error{
 		Message: m,
 		Status:  s,

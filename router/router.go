@@ -69,7 +69,10 @@ func (mng *Manager) getSysRoutes() []model.Route {
 
 // getV1Routes sets version 1 routes
 func (mng *Manager) getV1Routes(cntCll controller.Collector) []model.Route {
-	return []model.Route{}
+	return []model.Route{
+		/** Session **/
+		model.NewRoute(http.MethodGet, "/sessions", cntCll.SesCnt.GetSessions, "Get sessions"),
+	}
 }
 
 // healthCheck checks service health

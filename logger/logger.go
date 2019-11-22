@@ -1,6 +1,9 @@
 package logger
 
 import (
+	"fmt"
+	"time"
+
 	"github.com/sirupsen/logrus"
 	prefixed "github.com/x-cray/logrus-prefixed-formatter"
 )
@@ -24,4 +27,15 @@ func New() Logger {
 	return Logger{
 		Logger: logger,
 	}
+}
+
+// RequestEnd logs details of request end
+func (logger *Logger) RequestEnd(startAt time.Time, act string, status *int, errMsg *string) {
+	logger.WithFields(logrus.Fields{
+		"action":        act,
+		"status_code":   status,
+		"error_message": errMsg,
+		"created_at":    startAt.Unix(),
+		"response_time": fmt.Sprintf("%.4f", time.Since(startAt).Seconds()),
+	}).Info("request")
 }
