@@ -1,6 +1,6 @@
 # Timer API
 
-`timer-api` API provides endpoints for timer web
+`timer-api` API provides endpoints for timer web. It's a simple example of API wrote with Golang
 
 ## Required environment variables
 
